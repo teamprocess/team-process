@@ -2,6 +2,7 @@ export { Button, buttonVariants } from './button'
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './card'
 export { Avatar, AvatarImage, AvatarFallback } from './avatar'
 export { Badge, badgeVariants } from './badge'
+export { ClosedSection } from './closed-section'
 export { Separator } from './separator'
 export {
   DropdownMenu,
