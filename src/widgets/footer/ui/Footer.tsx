@@ -7,8 +7,8 @@ export function Footer() {
   return (
     <footer className="w-full border-t border-border bg-background">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[1.3fr_0.85fr_0.85fr]">
-          <div>
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-md">
             <Link href="/" className="flex items-center mb-4">
               <Image
                 src={SITE_CONFIG.logo}
@@ -21,8 +21,8 @@ export function Footer() {
             <p className="text-sm text-muted-foreground max-w-md">{SITE_CONFIG.description}</p>
           </div>
 
-          <div>
-            <h3 className="font-semibold mb-4">동아리 소개</h3>
+          <div className="lg:min-w-48">
+            <h3 className="font-semibold mb-4">바로가기</h3>
             <ul className="space-y-2">
               {MAIN_NAVIGATION.map(item => (
                 <li key={item.name}>
@@ -42,7 +42,7 @@ export function Footer() {
 
         <Separator className="my-8" />
 
-        <div className="flex flex-col md:flex-row items-center text-sm text-muted-foreground">
+        <div className="flex flex-col items-center text-sm text-muted-foreground md:flex-row md:justify-between">
           <p>© 2025-2026 {SITE_CONFIG.name}</p>
         </div>
       </div>
