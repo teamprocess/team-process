@@ -6,7 +6,7 @@ import { cn } from "@/shared/lib";
 import { Badge, Button, CardTitle } from "@/shared/ui";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   HiOutlineArrowRight,
   HiOutlineBookOpen,
@@ -31,11 +31,43 @@ const SERVICE_ICONS = [
 ];
 
 export function ClubHome() {
+  const programStages = CLUB_PROFILE.programStages;
+  const stageCount = programStages.length;
+  const serviceCount = SERVICES.length;
   const [activeStageIndex, setActiveStageIndex] = useState(0);
   const [activeServiceId, setActiveServiceId] = useState(SERVICES[0]?.id ?? 1);
   const shouldReduceMotion = useReducedMotion();
 
-  const activeStage = CLUB_PROFILE.programStages[activeStageIndex] ?? CLUB_PROFILE.programStages[0];
+  useEffect(() => {
+    if (stageCount <= 1) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setActiveStageIndex(currentIndex => (currentIndex + 1) % stageCount);
+    }, 3000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [activeStageIndex, stageCount]);
+
+  useEffect(() => {
+    if (serviceCount <= 1) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setActiveServiceId(currentServiceId => {
+        const currentIndex = SERVICES.findIndex(service => service.id === currentServiceId);
+        const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % serviceCount : 0;
+
+        return SERVICES[nextIndex]?.id ?? currentServiceId;
+      });
+    }, 5000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [activeServiceId, serviceCount]);
+
+  const activeStage = programStages[activeStageIndex] ?? programStages[0];
   const activeService = SERVICES.find(service => service.id === activeServiceId) ?? SERVICES[0];
 
   const sectionVariants = {
@@ -166,7 +198,7 @@ export function ClubHome() {
 
             <LayoutGroup>
               <div className="flex flex-col gap-3 lg:flex-row">
-                {CLUB_PROFILE.programStages.map((stage, index) => {
+                {programStages.map((stage, index) => {
                   const Icon = STAGE_ICONS[index] ?? HiOutlineWrenchScrewdriver;
                   const isActive = index === activeStageIndex;
 
@@ -174,24 +206,15 @@ export function ClubHome() {
                     <motion.button
                       key={stage.step}
                       type="button"
-                      layout
                       whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
                       onClick={() => setActiveStageIndex(index)}
                       className={cn(
                         "relative w-full overflow-hidden rounded-2xl border px-4 py-4 text-left transition-colors lg:flex-1",
                         isActive
-                          ? "border-primary/40 bg-background shadow-sm"
+                          ? "border-primary/40 bg-background shadow-sm ring-1 ring-primary/25"
                           : "border-border/70 bg-background/70 hover:border-primary/20 hover:bg-background"
                       )}
                     >
-                      {isActive ? (
-                        <motion.span
-                          layoutId="stage-active-indicator"
-                          className="absolute inset-0 rounded-2xl border border-primary/30"
-                          transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                        />
-                      ) : null}
-
                       <div className="relative flex items-start justify-between gap-4">
                         <div>
                           <p className="text-xs font-semibold tracking-[0.2em] text-primary">
@@ -275,7 +298,7 @@ export function ClubHome() {
 
           <div className="grid gap-6 xl:grid-cols-[0.88fr_1.12fr]">
             <LayoutGroup>
-              <div className="flex gap-3 overflow-x-auto pb-1 xl:flex-col">
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
                 {SERVICES.map((service, index) => {
                   const Icon = SERVICE_ICONS[index] ?? HiOutlineRocketLaunch;
                   const isActive = service.id === activeServiceId;
@@ -284,24 +307,15 @@ export function ClubHome() {
                     <motion.button
                       key={service.id}
                       type="button"
-                      layout
                       onClick={() => setActiveServiceId(service.id)}
                       whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
                       className={cn(
-                        "relative min-w-[17rem] overflow-hidden rounded-3xl border px-5 py-4 text-left xl:min-w-0",
+                        "relative w-full overflow-hidden rounded-3xl border px-5 py-4 text-left",
                         isActive
-                          ? "border-primary/40 bg-background shadow-sm"
+                          ? "border-primary/40 bg-background shadow-sm ring-1 ring-primary/25"
                           : "border-border/70 bg-muted/20 hover:border-primary/20 hover:bg-background"
                       )}
                     >
-                      {isActive ? (
-                        <motion.span
-                          layoutId="service-active-indicator"
-                          className="absolute inset-0 rounded-3xl border border-primary/30"
-                          transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                        />
-                      ) : null}
-
                       <div className="relative flex items-start gap-4">
                         <div className="flex size-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                           <Icon className="size-5" />
@@ -328,7 +342,7 @@ export function ClubHome() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: shouldReduceMotion ? 0 : -18 }}
                 transition={{ duration: shouldReduceMotion ? 0 : 0.28, ease: "easeOut" }}
-                className="rounded-[2rem] border border-border/70 bg-background p-6 shadow-sm sm:p-7"
+                className="min-w-0 overflow-hidden rounded-[2rem] border border-border/70 bg-background p-6 shadow-sm sm:p-7"
               >
                 <div className="space-y-3">
                   <Badge variant="secondary" className="rounded-full px-3 py-1">
