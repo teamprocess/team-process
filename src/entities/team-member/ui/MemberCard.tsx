@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, Badge, Card, CardContent, CardHeader, CardTitle } from '@/shared/ui'
+import { Avatar, AvatarFallback, Card, CardContent, CardHeader, CardTitle } from '@/shared/ui'
 import type { TeamMember } from '../model/types'
 
 interface MemberCardProps {
@@ -17,12 +17,11 @@ export function MemberCard({ member }: MemberCardProps) {
           </Avatar>
         </div>
         <CardTitle className="text-xl">{member.name}</CardTitle>
-        <p className="text-sm font-medium text-muted-foreground">학번 {member.studentId}</p>
       </CardHeader>
-      <CardContent className="flex justify-center">
-        <Badge variant="secondary" className="rounded-full px-3 py-1">
-          PROCESS 동아리원
-        </Badge>
+      <CardContent className="pt-0 text-center">
+        <p className="text-sm font-medium leading-6 text-muted-foreground">
+          {member.role}
+        </p>
       </CardContent>
     </Card>
   )

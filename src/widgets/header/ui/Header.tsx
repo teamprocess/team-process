@@ -11,6 +11,7 @@ import { useState } from 'react'
 export function Header() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const headerNavigation = MAIN_NAVIGATION.filter((item) => !item.newTab)
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/'
@@ -34,9 +35,15 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-1">
-          {MAIN_NAVIGATION.map((item) => (
+          {headerNavigation.map((item) => (
             <Button key={item.href} variant={isActive(item.href) ? 'default' : 'ghost'} asChild>
-              <Link href={item.href}>{item.name}</Link>
+              <Link
+                href={item.href}
+                target={item.newTab ? '_blank' : undefined}
+                rel={item.newTab ? 'noopener noreferrer' : undefined}
+              >
+                {item.name}
+              </Link>
             </Button>
           ))}
         </div>
@@ -93,7 +100,7 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-border bg-background">
           <div className="container mx-auto py-4 px-4 space-y-2">
-            {MAIN_NAVIGATION.map((item) => (
+            {headerNavigation.map((item) => (
               <Button
                 key={item.href}
                 variant={isActive(item.href) ? 'default' : 'ghost'}
@@ -101,7 +108,13 @@ export function Header() {
                 asChild
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <Link href={item.href}>{item.name}</Link>
+                <Link
+                  href={item.href}
+                  target={item.newTab ? '_blank' : undefined}
+                  rel={item.newTab ? 'noopener noreferrer' : undefined}
+                >
+                  {item.name}
+                </Link>
               </Button>
             ))}
           </div>
