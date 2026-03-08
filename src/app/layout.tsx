@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import React from "react";
-import { ThemeProvider } from "@/shared/providers";
+import { ScrollToTop, ThemeProvider } from "@/shared/providers";
 import { SITE_CONFIG } from "@/shared/config";
 import { Header } from "@/widgets/header";
 import { Footer } from "@/widgets/footer";
@@ -34,6 +34,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollToTop />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
