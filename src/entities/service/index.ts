@@ -1,2 +1,3 @@
 export { SERVICES } from './model/data'
-export type { Service } from './model/types'
+export { SERVICE_SHOWCASES } from './model/showcase'
+export type { Service, ServiceShowcase } from './model/types'
