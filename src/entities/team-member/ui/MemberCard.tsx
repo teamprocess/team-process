@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, Card, CardContent, CardHeader, CardTitle } from '@/shared/ui'
+import { Avatar, AvatarFallback, AvatarImage, Card, CardContent, CardHeader, CardTitle } from '@/shared/ui'
 import type { TeamMember } from '../model/types'
 
 interface MemberCardProps {
@@ -7,10 +7,11 @@ interface MemberCardProps {
 
 export function MemberCard({ member }: MemberCardProps) {
   return (
-    <Card className="h-full border-border/70 bg-background shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg">
+    <Card className="process-surface h-full overflow-hidden rounded-[1.5rem] transition-transform duration-200 hover:-translate-y-0.5">
       <CardHeader className="items-center text-center">
         <div className="flex justify-center mb-4">
-          <Avatar className="h-20 w-20 border border-primary/20 bg-primary/10">
+          <Avatar className="h-20 w-20 border border-primary/20 bg-primary/8">
+            <AvatarImage src={member.imageSrc} alt={member.name} className="object-cover" />
             <AvatarFallback className="bg-primary/10 text-xl font-semibold text-primary">
               {member.name.substring(0, 2)}
             </AvatarFallback>
