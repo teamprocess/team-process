@@ -389,6 +389,35 @@
   color: var(--foreground);
 }
 
+.process-services .process-surface {
+  border-color: rgba(218, 224, 232, 0.94);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.035),
+    0 14px 30px rgba(15, 23, 42, 0.055);
+}
+
+.process-services .process-surface:hover {
+  border-color: rgba(0, 102, 179, 0.16);
+  box-shadow:
+    0 2px 4px rgba(15, 23, 42, 0.05),
+    0 18px 38px rgba(15, 23, 42, 0.075);
+}
+
+.dark .process-services .process-surface {
+  background: linear-gradient(180deg, rgba(21, 24, 29, 0.97), rgba(27, 31, 36, 0.96));
+  border-color: rgba(101, 108, 118, 0.44);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.14),
+    0 14px 28px rgba(0, 0, 0, 0.22);
+}
+
+.dark .process-services .process-surface:hover {
+  border-color: rgba(85, 190, 255, 0.2);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.16),
+    0 16px 34px rgba(0, 0, 0, 0.24);
+}
+
 @media (max-width: 767px) {
   .process-home .process-backdrop-canvas {
     opacity: 0.6;
