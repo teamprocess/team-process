@@ -56,7 +56,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 7,
     name: "권대형",
-    role: "Software Engineer",
+    role: "Software Engineer & AI Researcher",
     imageSrc: getImageSrc("권대형"),
   },
   {
