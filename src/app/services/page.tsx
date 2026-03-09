@@ -13,25 +13,32 @@ const LINK_ICONS = {
 export default function ServicesPage() {
   return (
     <div className="bg-background">
-      <main className="container mx-auto px-4 py-10 sm:py-12 lg:py-14">
-        <section className="max-w-2xl space-y-2">
-          <p className="text-sm font-medium text-primary">Services</p>
-          <h1 className="text-3xl font-semibold leading-[1.12] tracking-tight text-foreground sm:text-4xl">
-            PROCESS가 운영하는 서비스
-          </h1>
-          <p className="text-sm leading-7 text-muted-foreground sm:text-base">
-            실제로 운영하거나 개발한 서비스를 핵심 기능 중심으로 간단하게 소개합니다.
-          </p>
-        </section>
+      <section className="border-b border-border/70 bg-[linear-gradient(180deg,rgba(248,250,252,0.9),rgba(255,255,255,0.98))] dark:bg-[linear-gradient(180deg,rgba(38,41,45,0.94),rgba(45,48,52,0.97))]">
+        <div className="container mx-auto max-w-6xl px-4 py-14 sm:py-16 lg:py-20">
+          <div className="max-w-3xl space-y-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary/80">
+              Services
+            </p>
+            <h1 className="process-display text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-foreground sm:text-5xl">
+              PROCESS가 운영하는 서비스
+            </h1>
+            <p className="max-w-2xl text-base leading-8 text-foreground/78 dark:text-foreground/84">
+              실제로 운영하거나 개발한 서비스를 핵심 기능 중심으로 소개합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <main className="container mx-auto max-w-6xl px-4 py-10 sm:py-12 lg:py-14">
 
         <section className="mt-9 grid gap-5">
           {SERVICE_SHOWCASES.map((service, index) => (
             <article
               key={service.id}
-              className="grid gap-6 rounded-[1.5rem] border border-border/70 bg-card p-5 shadow-sm sm:p-6 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch"
+              className="process-surface grid gap-6 rounded-[1.75rem] p-5 sm:p-6 lg:grid-cols-[1.02fr_0.98fr] lg:items-stretch"
             >
               <div className={index === 1 ? 'lg:order-2 lg:h-full' : 'lg:h-full'}>
-                <div className="relative flex h-full min-h-[260px] items-center justify-center overflow-hidden rounded-[1.1rem] border border-border/70 bg-gradient-to-br from-muted/40 via-background to-muted/20 p-3 sm:min-h-[320px] sm:p-4">
+                <div className="relative flex h-full min-h-[260px] items-center justify-center overflow-hidden rounded-[1.25rem] border border-border/70 bg-gradient-to-br from-muted/30 via-background to-muted/10 p-3 sm:min-h-[320px] sm:p-4">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,102,179,0.08),transparent_45%)]" />
                   <Image
                     src={service.image.src}
@@ -68,7 +75,7 @@ export default function ServicesPage() {
                       {service.features.map(feature => (
                         <li
                           key={feature}
-                          className="rounded-xl border border-border/70 bg-muted/20 px-3.5 py-2.5 text-sm text-foreground"
+                          className="rounded-xl border border-border/70 bg-muted/15 px-3.5 py-2.5 text-sm text-foreground"
                         >
                           {feature}
                         </li>
