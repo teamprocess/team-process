@@ -2,11 +2,13 @@ import type { ClubProfile } from "./types";
 
 export const CLUB_PROFILE: ClubProfile = {
   name: "PROCESS",
-  title: "실제 서비스를 운영하며 \n 실무 감각을 키우는 동아리",
-  subtitle: "Clash 서비스 운영, 기초 교육, 협업 프로젝트를 하나의 흐름으로 연결합니다.",
+  // title: "최고를 향해,\n실제 서비스를 만드는 동아리",
+  title: "처음의 떨림을,\n끝내 자신감으로 바꾸는 동아리",
+  subtitle:
+    "신입생도 괜찮습니다. 기초 교육부터 개인 프로젝트, 협업, 실제 서비스 운영까지 배우고 바로 해보는 흐름으로 성장합니다.",
   heroDescription:
-    "PROCESS는 학습 기록 기반 경쟁 애플리케이션 Clash를 운영하면서 서비스 유지보수와 협업 개발을 경험하는 개발 동아리입니다.",
-  badges: ["Clash 운영", "웹/서버 기초 교육", "Git/GitHub 협업", "프로젝트 멘토링"],
+    "웹을 처음 시작해도 됩니다. 10기에서 실력을 증명한 선배들이 만든 신생 동아리에서 개발 환경 세팅부터 멘토링까지 함께하고, 1학년부터 직접 만들고 협업하고 운영합니다.",
+  badges: ["Clash 운영", "Frontend/Server/AI 멘토링", "과정형 멘토링", "높은 기준의 팀 문화"],
   programStages: [
     {
       step: "01",
@@ -17,9 +19,10 @@ export const CLUB_PROFILE: ClubProfile = {
     },
     {
       step: "02",
-      title: "개인 미니 프로젝트",
-      description: "토이 프로젝트를 진행하며 스스로 구현하고 피드백을 반영하는 경험을 쌓습니다.",
-      highlights: ["개인 토이 프로젝트", "주기적인 코드 피드백", "실제 문제 해결 경험"],
+      title: "1학년 개인 프로젝트",
+      description:
+        "개인 프로젝트를 진행하며 선배 멘토와 함께 기획, 구현, 피드백, 개선의 과정을 반복합니다.",
+      highlights: ["개인 프로젝트", "과정형 멘토링", "주기적인 코드 피드백", "실제 문제 해결 경험"],
     },
     {
       step: "03",
