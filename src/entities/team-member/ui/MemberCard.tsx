@@ -43,7 +43,7 @@ export function MemberCard({ member }: MemberCardProps) {
                 rel="noreferrer"
                 aria-label={`${member.name} GitHub 프로필`}
                 title={member.github}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-md"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-md dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:shadow-none dark:hover:bg-white/[0.1]"
               >
                 <FaGithub className="size-5" />
                 <span className="sr-only">{member.github}</span>
@@ -56,7 +56,7 @@ export function MemberCard({ member }: MemberCardProps) {
                 rel="noreferrer"
                 aria-label={`${member.name} Velog 프로필`}
                 title={member.velog}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-md"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-md dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:shadow-none dark:hover:bg-white/[0.1]"
               >
                 <SiVelog className="size-5" />
                 <span className="sr-only">{member.velog}</span>
