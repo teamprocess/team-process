@@ -34,7 +34,7 @@ export function ClubHome() {
             <h1 className="process-display whitespace-pre-line text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
               {CLUB_PROFILE.title}
             </h1>
-            <p className="max-w-2xl text-base leading-8 text-foreground/82 sm:text-lg dark:text-foreground/88">
+            <p className="max-w-2xl whitespace-normal text-base leading-8 text-foreground/82 sm:whitespace-pre-line sm:text-lg dark:text-foreground/88">
               {CLUB_PROFILE.subtitle}
             </p>
             <p className="max-w-2xl text-sm leading-7 text-foreground/66 sm:text-base dark:text-foreground/74">

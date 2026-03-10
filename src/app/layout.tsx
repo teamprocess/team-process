@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "pretendard/dist/web/variable/pretendardvariable.css";
 import "./globals.css";
 import React from "react";
 import { ScrollToTop, ThemeProvider } from "@/shared/providers";

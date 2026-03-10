@@ -37,7 +37,7 @@ export default function ServicesPage() {
               className={`process-surface process-fade-up ${index === 0 ? 'process-delay-1' : 'process-delay-2'} rounded-[1.08rem] px-6 py-6 sm:px-8 sm:py-8 lg:px-10`}
             >
               <div className="grid gap-6 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-stretch">
-                <div className={index % 2 === 1 ? 'lg:order-2' : undefined}>
+                <div className={index % 2 === 1 ? 'lg:order-2 lg:self-center' : 'lg:self-center'}>
                   <div className="relative overflow-hidden rounded-[0.9rem] border border-border/70 bg-[#faf9f7] p-3 sm:p-4 dark:border-white/6 dark:bg-[#30302d]">
                     <div className="relative flex min-h-[260px] items-center justify-center sm:min-h-[320px]">
                       <Image

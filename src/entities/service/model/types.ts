@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 export interface Service {
   id: number
   title: string
@@ -13,7 +15,7 @@ export interface ServiceLink {
 }
 
 export interface ServiceImage {
-  src: string
+  src: string | StaticImageData
   alt: string
 }
 
