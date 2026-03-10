@@ -1,8 +1,19 @@
+import Link from 'next/link'
+import { FaGithub } from 'react-icons/fa'
+import { SiVelog } from 'react-icons/si'
 import { Avatar, AvatarFallback, AvatarImage, Card, CardContent, CardHeader, CardTitle } from '@/shared/ui'
 import type { TeamMember } from '../model/types'
 
 interface MemberCardProps {
   member: TeamMember
+}
+
+function getGithubUrl(handle: string) {
+  return `https://github.com/${handle.replace(/^@/, '')}`
+}
+
+function getVelogUrl(handle: string) {
+  return `https://velog.io/${handle.startsWith('@') ? handle : `@${handle}`}`
 }
 
 export function MemberCard({ member }: MemberCardProps) {
@@ -19,10 +30,40 @@ export function MemberCard({ member }: MemberCardProps) {
         </div>
         <CardTitle className="text-xl">{member.name}</CardTitle>
       </CardHeader>
-      <CardContent className="pt-0 text-center">
+      <CardContent className="space-y-3 pt-0 text-center">
         <p className="text-sm font-medium leading-6 text-muted-foreground">
           {member.role}
         </p>
+        {member.github || member.velog ? (
+          <div className="flex justify-center gap-2 pt-1">
+            {member.github ? (
+              <Link
+                href={getGithubUrl(member.github)}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${member.name} GitHub 프로필`}
+                title={member.github}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-md"
+              >
+                <FaGithub className="size-5" />
+                <span className="sr-only">{member.github}</span>
+              </Link>
+            ) : null}
+            {member.velog ? (
+              <Link
+                href={getVelogUrl(member.velog)}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${member.name} Velog 프로필`}
+                title={member.velog}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-md"
+              >
+                <SiVelog className="size-5" />
+                <span className="sr-only">{member.velog}</span>
+              </Link>
+            ) : null}
+          </div>
+        ) : null}
       </CardContent>
     </Card>
   )

@@ -3,4 +3,6 @@ export interface TeamMember {
   name: string
   role: string
   imageSrc: string
+  github?: string
+  velog?: string
 }
