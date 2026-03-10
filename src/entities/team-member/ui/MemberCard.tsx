@@ -18,24 +18,26 @@ function getVelogUrl(handle: string) {
 
 export function MemberCard({ member }: MemberCardProps) {
   return (
-    <Card className="process-surface h-full overflow-hidden rounded-[1.5rem] transition-transform duration-200 hover:-translate-y-0.5">
-      <CardHeader className="items-center text-center">
+    <Card className="process-surface h-full overflow-hidden rounded-[1.05rem]">
+      <CardHeader className="items-center pb-4 text-center">
         <div className="flex justify-center mb-4">
-          <Avatar className="h-20 w-20 border border-primary/20 bg-primary/8">
+          <Avatar className="h-20 w-20 border border-border bg-muted/30">
             <AvatarImage src={member.imageSrc} alt={member.name} className="object-cover" />
-            <AvatarFallback className="bg-primary/10 text-xl font-semibold text-primary">
+            <AvatarFallback className="bg-muted/40 text-xl font-semibold text-foreground">
               {member.name.substring(0, 2)}
             </AvatarFallback>
           </Avatar>
         </div>
-        <CardTitle className="text-xl">{member.name}</CardTitle>
+        <CardTitle className="min-h-[1.75rem] text-xl leading-7">{member.name}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3 pt-0 text-center">
-        <p className="text-sm font-medium leading-6 text-muted-foreground">
-          {member.role}
-        </p>
+      <CardContent className="flex flex-1 flex-col items-center pt-0 text-center">
+        <div className="flex min-h-[3.5rem] items-start justify-center">
+          <p className="text-sm font-medium leading-6 text-muted-foreground">
+            {member.role}
+          </p>
+        </div>
         {member.github || member.velog ? (
-          <div className="flex justify-center gap-2 pt-1">
+          <div className="mt-auto flex justify-center gap-2 pt-4">
             {member.github ? (
               <Link
                 href={getGithubUrl(member.github)}
@@ -43,7 +45,7 @@ export function MemberCard({ member }: MemberCardProps) {
                 rel="noreferrer"
                 aria-label={`${member.name} GitHub 프로필`}
                 title={member.github}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-md dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:shadow-none dark:hover:bg-white/[0.1]"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 transition-colors duration-200 hover:bg-white/92 dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:hover:bg-white/[0.1]"
               >
                 <FaGithub className="size-5" />
                 <span className="sr-only">{member.github}</span>
@@ -56,7 +58,7 @@ export function MemberCard({ member }: MemberCardProps) {
                 rel="noreferrer"
                 aria-label={`${member.name} Velog 프로필`}
                 title={member.velog}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/92 hover:shadow-md dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:shadow-none dark:hover:bg-white/[0.1]"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/90 bg-white text-slate-950 transition-colors duration-200 hover:bg-white/92 dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:hover:bg-white/[0.1]"
               >
                 <SiVelog className="size-5" />
                 <span className="sr-only">{member.velog}</span>

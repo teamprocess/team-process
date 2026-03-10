@@ -18,19 +18,20 @@ function getImageSrc(name: string) {
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: 1,
-    name: "장준혁",
-    role: "Network Engineer",
-    imageSrc: getImageSrc("장준혁"),
-    github: "@JJH090501",
-  },
-  {
     id: 2,
     name: "채근영",
-    role: "Team Leader & Software Engineer",
+    role: "Team Leader & Fullstack Developer",
     imageSrc: getImageSrc("채근영"),
     github: "@chaeyn",
     velog: "@__chaeyn",
+  },
+  {
+    id: 7,
+    name: "권대형",
+    role: "Fullstack Developer & AI Researcher",
+    imageSrc: getImageSrc("권대형"),
+    github: "@daehyeong2",
+    velog: "@daehyeong2",
   },
   {
     id: 3,
@@ -38,13 +39,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Frontend Developer",
     imageSrc: getImageSrc("오용준"),
     github: "@Divanzo",
-  },
-  {
-    id: 4,
-    name: "홍준기",
-    role: "Backend Developer",
-    imageSrc: getImageSrc("홍준기"),
-    github: "@redjungi09",
   },
   {
     id: 5,
@@ -61,12 +55,11 @@ export const TEAM_MEMBERS: TeamMember[] = [
     github: "@Finefinee",
   },
   {
-    id: 7,
-    name: "권대형",
-    role: "Software Engineer & AI Researcher",
-    imageSrc: getImageSrc("권대형"),
-    github: "@daehyeong2",
-    velog: "@daehyeong2",
+    id: 4,
+    name: "홍준기",
+    role: "Backend Developer",
+    imageSrc: getImageSrc("홍준기"),
+    github: "@redjungi09",
   },
   {
     id: 8,
@@ -74,5 +67,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Backend Developer",
     imageSrc: getImageSrc("황정빈"),
     github: "@hjbin-25",
+  },
+  {
+    id: 1,
+    name: "장준혁",
+    role: "Network Engineer",
+    imageSrc: getImageSrc("장준혁"),
+    github: "@JJH090501",
   },
 ];

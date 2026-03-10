@@ -21,6 +21,20 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
 
+function getGlowAnchor(width: number, height: number) {
+  if (width < 768) {
+    return {
+      x: width * 0.24,
+      y: height * 0.18,
+    };
+  }
+
+  return {
+    x: width * 0.16,
+    y: height * 0.2,
+  };
+}
+
 function createMesh(width: number, height: number): MeshState {
   const spacing = width < 768 ? 96 : 118;
   const cols = Math.ceil(width / spacing) + 2;
@@ -52,9 +66,8 @@ export function HeroBackdrop() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const shell = canvas?.parentElement;
-    const host = shell?.parentElement;
 
-    if (!canvas || !shell || !host) {
+    if (!canvas || !shell) {
       return undefined;
     }
 
@@ -63,12 +76,6 @@ export function HeroBackdrop() {
     if (!context) {
       return undefined;
     }
-
-    const pointer = {
-      active: false,
-      x: 0,
-      y: 0,
-    };
 
     const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let shouldReduceMotion = reduceMotionQuery.matches;
@@ -91,12 +98,13 @@ export function HeroBackdrop() {
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
       const isDark = document.documentElement.classList.contains("dark");
-      const glowX = pointer.active ? pointer.x : width * 0.66;
-      const glowY = pointer.active ? pointer.y : height * 0.36;
-      const baseLineAlpha = isDark ? 0.07 : 0.075;
-      const baseDotAlpha = isDark ? 0.13 : 0.13;
-      const lineColor = isDark ? "126, 196, 240" : "0, 94, 166";
-      const glowColor = isDark ? "86, 184, 240" : "0, 102, 179";
+      const glowAnchor = getGlowAnchor(width, height);
+      const glowX = glowAnchor.x;
+      const glowY = glowAnchor.y;
+      const baseLineAlpha = isDark ? 0.082 : 0.078;
+      const baseDotAlpha = isDark ? 0.145 : 0.134;
+      const lineColor = isDark ? "176, 173, 166" : "112, 116, 126";
+      const glowColor = isDark ? "245, 238, 221" : "138, 192, 255";
 
       context.clearRect(0, 0, width, height);
 
@@ -106,13 +114,29 @@ export function HeroBackdrop() {
         0,
         glowX,
         glowY,
-        Math.max(width, height) * 0.48
+        Math.max(width, height) * (isDark ? 0.5 : 0.56)
       );
 
-      glow.addColorStop(0, `rgba(${glowColor}, ${isDark ? 0.15 : 0.075})`);
-      glow.addColorStop(0.45, `rgba(${glowColor}, ${isDark ? 0.06 : 0.022})`);
+      glow.addColorStop(0, `rgba(${glowColor}, ${isDark ? 0.28 : 0.17})`);
+      glow.addColorStop(0.3, `rgba(${glowColor}, ${isDark ? 0.18 : 0.08})`);
+      glow.addColorStop(0.55, `rgba(${glowColor}, ${isDark ? 0.1 : 0.025})`);
       glow.addColorStop(1, "rgba(0, 0, 0, 0)");
       context.fillStyle = glow;
+      context.fillRect(0, 0, width, height);
+
+      const coreGlow = context.createRadialGradient(
+        glowX,
+        glowY,
+        0,
+        glowX,
+        glowY,
+        Math.max(width, height) * (isDark ? 0.16 : 0.19)
+      );
+
+      coreGlow.addColorStop(0, isDark ? "rgba(255, 247, 229, 0.38)" : "rgba(172, 213, 255, 0.24)");
+      coreGlow.addColorStop(0.48, isDark ? "rgba(236, 228, 207, 0.14)" : "rgba(138, 192, 255, 0.05)");
+      coreGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
+      context.fillStyle = coreGlow;
       context.fillRect(0, 0, width, height);
 
       const animatedPoints = mesh.points.map((point) => {
@@ -144,13 +168,13 @@ export function HeroBackdrop() {
           const midY = (point.y + neighbor.y) / 2;
           const pointerDistance = Math.hypot(midX - glowX, midY - glowY);
           const proximity = clamp(1 - pointerDistance / Math.max(width, height), 0, 1);
-          const alpha = baseLineAlpha + proximity * (isDark ? 0.095 : 0.085);
+          const alpha = baseLineAlpha + proximity * (isDark ? 0.13 : 0.12);
 
           context.beginPath();
           context.moveTo(point.x, point.y);
           context.lineTo(neighbor.x, neighbor.y);
           context.strokeStyle = `rgba(${lineColor}, ${alpha})`;
-          context.lineWidth = isDark ? 1.02 : 1.05;
+          context.lineWidth = isDark ? 1.06 : 1.08;
           context.stroke();
         }
       }
@@ -158,8 +182,8 @@ export function HeroBackdrop() {
       for (const point of animatedPoints) {
         const pointerDistance = Math.hypot(point.x - glowX, point.y - glowY);
         const proximity = clamp(1 - pointerDistance / (Math.max(width, height) * 0.52), 0, 1);
-        const radius = (isDark ? 1 : 0.95) + proximity * (isDark ? 1.15 : 1.2);
-        const alpha = baseDotAlpha + proximity * (isDark ? 0.14 : 0.15);
+        const radius = (isDark ? 1.05 : 1.02) + proximity * (isDark ? 1.4 : 1.26);
+        const alpha = baseDotAlpha + proximity * (isDark ? 0.19 : 0.18);
 
         context.beginPath();
         context.arc(point.x, point.y, radius, 0, Math.PI * 2);
@@ -171,25 +195,6 @@ export function HeroBackdrop() {
     const animate = (time: number) => {
       draw(time);
       frameId = shouldReduceMotion ? 0 : window.requestAnimationFrame(animate);
-    };
-
-    const handlePointerMove = (event: PointerEvent) => {
-      const rect = shell.getBoundingClientRect();
-      pointer.active = true;
-      pointer.x = clamp(event.clientX - rect.left, 0, rect.width);
-      pointer.y = clamp(event.clientY - rect.top, 0, rect.height);
-
-      if (shouldReduceMotion) {
-        draw(0);
-      }
-    };
-
-    const handlePointerLeave = () => {
-      pointer.active = false;
-
-      if (shouldReduceMotion) {
-        draw(0);
-      }
     };
 
     const handleMotionPreference = (event: MediaQueryListEvent) => {
@@ -218,15 +223,11 @@ export function HeroBackdrop() {
     }
 
     resizeObserver.observe(shell);
-    host.addEventListener("pointermove", handlePointerMove);
-    host.addEventListener("pointerleave", handlePointerLeave);
     reduceMotionQuery.addEventListener("change", handleMotionPreference);
 
     return () => {
       window.cancelAnimationFrame(frameId);
       resizeObserver.disconnect();
-      host.removeEventListener("pointermove", handlePointerMove);
-      host.removeEventListener("pointerleave", handlePointerLeave);
       reduceMotionQuery.removeEventListener("change", handleMotionPreference);
     };
   }, []);

@@ -201,7 +201,7 @@
 
   .process-hero {
     isolation: isolate;
-    background: linear-gradient(180deg, rgba(248, 250, 252, 0.96), rgba(255, 255, 255, 0.98));
+    background: rgba(251, 250, 248, 0.98);
   }
 
   .process-hero::before {
@@ -209,9 +209,7 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.62)),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.82) 38%, rgba(255, 255, 255, 0.62) 64%, rgba(255, 255, 255, 0.18) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.5));
     pointer-events: none;
   }
 
@@ -220,26 +218,28 @@
   }
 
   .process-backdrop-canvas {
-    opacity: 0.52;
+    opacity: 0.48;
   }
 
   .process-surface {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(250, 250, 251, 0.95));
-    border: 1px solid rgba(232, 232, 233, 0.92);
-    box-shadow:
-      0 1px 2px rgba(15, 23, 42, 0.03),
-      0 6px 14px rgba(15, 23, 42, 0.035);
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(230, 228, 224, 0.92);
     backdrop-filter: blur(4px);
-    transition:
-      box-shadow 220ms ease,
-      border-color 220ms ease;
+    transition: border-color 220ms ease;
   }
 
   .process-surface:hover {
-    box-shadow:
-      0 1px 3px rgba(15, 23, 42, 0.032),
-      0 8px 16px rgba(15, 23, 42, 0.04);
-    border-color: rgba(0, 102, 179, 0.12);
+    border-color: rgba(176, 171, 163, 0.34);
+  }
+
+  .process-benefit-band {
+    background: rgba(250, 249, 247, 0.96);
+    border: 1px solid rgba(228, 226, 222, 0.9);
+  }
+
+  .process-benefit-orb {
+    background: rgba(248, 247, 244, 0.98);
+    border: 1px solid rgba(225, 223, 218, 0.94);
   }
 
   .process-fade-up {
@@ -262,18 +262,22 @@
 }
 
 .dark .process-surface {
-  background: linear-gradient(180deg, rgba(50, 53, 57, 0.94), rgba(56, 60, 65, 0.93));
-  border-color: rgba(116, 121, 128, 0.42);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.1),
-    0 6px 14px rgba(0, 0, 0, 0.13);
+  background: rgba(39, 39, 36, 0.95);
+  border-color: rgba(124, 122, 117, 0.26);
 }
 
 .dark .process-surface:hover {
-  border-color: rgba(45, 178, 255, 0.16);
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 8px 18px rgba(0, 0, 0, 0.16);
+  border-color: rgba(148, 145, 139, 0.24);
+}
+
+.dark .process-benefit-band {
+  background: rgba(35, 35, 32, 0.96);
+  border-color: rgba(124, 122, 117, 0.16);
+}
+
+.dark .process-benefit-orb {
+  background: rgba(45, 45, 42, 0.97);
+  border-color: rgba(132, 129, 123, 0.2);
 }
 
 @keyframes process-fade-up {
@@ -319,33 +323,23 @@
 }
 
 .process-home .process-hero {
-  background:
-    linear-gradient(180deg, rgba(248, 250, 252, 0.95), rgba(255, 255, 255, 0.985)),
-    linear-gradient(90deg, rgba(0, 102, 179, 0.04), transparent 55%);
+  background: rgba(251, 250, 248, 0.99);
 }
 
 .process-home .process-hero::before {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.44)),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.54) 42%, rgba(255, 255, 255, 0.34) 70%, rgba(255, 255, 255, 0.08) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.38));
 }
 
 .process-home .process-backdrop-canvas {
-  opacity: 0.74;
+  opacity: 0.56;
 }
 
 .process-home .process-surface {
-  border-color: rgba(220, 226, 233, 0.92);
-  box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.035),
-    0 16px 36px rgba(15, 23, 42, 0.065);
+  border-color: rgba(226, 224, 219, 0.92);
 }
 
 .process-home .process-surface:hover {
-  border-color: rgba(0, 102, 179, 0.16);
-  box-shadow:
-    0 2px 4px rgba(15, 23, 42, 0.05),
-    0 20px 44px rgba(15, 23, 42, 0.085);
+  border-color: rgba(176, 171, 163, 0.34);
 }
 
 .process-home .process-home-markdown h2,
@@ -354,34 +348,24 @@
 }
 
 .dark .process-home .process-hero {
-  background:
-    linear-gradient(180deg, rgba(18, 21, 25, 0.99), rgba(24, 28, 33, 0.98)),
-    linear-gradient(90deg, rgba(45, 178, 255, 0.06), transparent 58%);
+  background: rgba(24, 24, 22, 0.99);
 }
 
 .dark .process-home .process-hero::before {
-  background:
-    linear-gradient(180deg, rgba(9, 12, 16, 0.08), rgba(10, 13, 17, 0.24)),
-    linear-gradient(90deg, rgba(12, 15, 19, 0.62) 0%, rgba(14, 18, 22, 0.5) 40%, rgba(18, 22, 26, 0.24) 68%, rgba(22, 26, 30, 0.04) 100%);
+  background: linear-gradient(180deg, rgba(10, 10, 9, 0.03), rgba(14, 14, 13, 0.12));
 }
 
 .dark .process-home .process-backdrop-canvas {
-  opacity: 0.64;
+  opacity: 0.5;
 }
 
 .dark .process-home .process-surface {
-  background: linear-gradient(180deg, rgba(22, 25, 30, 0.96), rgba(27, 31, 36, 0.95));
-  border-color: rgba(92, 98, 106, 0.52);
-  box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.16),
-    0 16px 34px rgba(0, 0, 0, 0.28);
+  background: rgba(39, 39, 36, 0.95);
+  border-color: rgba(124, 122, 117, 0.18);
 }
 
 .dark .process-home .process-surface:hover {
-  border-color: rgba(45, 178, 255, 0.22);
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.18),
-    0 18px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(148, 145, 139, 0.2);
 }
 
 .dark .process-home .process-home-markdown h2,
@@ -390,40 +374,28 @@
 }
 
 .process-services .process-surface {
-  border-color: rgba(218, 224, 232, 0.94);
-  box-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.035),
-    0 14px 30px rgba(15, 23, 42, 0.055);
+  border-color: rgba(226, 224, 219, 0.94);
 }
 
 .process-services .process-surface:hover {
-  border-color: rgba(0, 102, 179, 0.16);
-  box-shadow:
-    0 2px 4px rgba(15, 23, 42, 0.05),
-    0 18px 38px rgba(15, 23, 42, 0.075);
+  border-color: rgba(176, 171, 163, 0.34);
 }
 
 .dark .process-services .process-surface {
-  background: linear-gradient(180deg, rgba(21, 24, 29, 0.97), rgba(27, 31, 36, 0.96));
-  border-color: rgba(101, 108, 118, 0.44);
-  box-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.14),
-    0 14px 28px rgba(0, 0, 0, 0.22);
+  background: rgba(39, 39, 36, 0.95);
+  border-color: rgba(124, 122, 117, 0.18);
 }
 
 .dark .process-services .process-surface:hover {
-  border-color: rgba(85, 190, 255, 0.2);
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.16),
-    0 16px 34px rgba(0, 0, 0, 0.24);
+  border-color: rgba(148, 145, 139, 0.2);
 }
 
 @media (max-width: 767px) {
   .process-home .process-backdrop-canvas {
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   .dark .process-home .process-backdrop-canvas {
-    opacity: 0.54;
+    opacity: 0.44;
   }
 }

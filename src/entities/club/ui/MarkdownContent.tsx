@@ -53,7 +53,7 @@ export function MarkdownContent({ content, className }: MarkdownContentProps) {
           ul: ({ className: listClassName, ...props }) => (
             <ul
               className={cn(
-                "list-disc space-y-3 pl-5 text-sm leading-7 text-muted-foreground marker:text-primary dark:text-foreground/78 sm:text-base",
+                "list-disc space-y-3 pl-5 text-sm leading-7 text-muted-foreground marker:text-[#4f82bf] dark:text-foreground/78 dark:marker:text-[#78a7dd] sm:text-base",
                 listClassName
               )}
               {...props}
@@ -62,7 +62,7 @@ export function MarkdownContent({ content, className }: MarkdownContentProps) {
           ol: ({ className: listClassName, ...props }) => (
             <ol
               className={cn(
-                "list-decimal space-y-3 pl-5 text-sm leading-7 text-muted-foreground marker:text-primary dark:text-foreground/78 sm:text-base",
+                "list-decimal space-y-3 pl-5 text-sm leading-7 text-muted-foreground marker:text-[#4f82bf] dark:text-foreground/78 dark:marker:text-[#78a7dd] sm:text-base",
                 listClassName
               )}
               {...props}
@@ -77,7 +77,7 @@ export function MarkdownContent({ content, className }: MarkdownContentProps) {
           a: ({ className: linkClassName, ...props }) => (
             <a
               className={cn(
-                "font-medium text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary",
+                "font-medium text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground/30",
                 linkClassName
               )}
               {...props}
@@ -86,7 +86,7 @@ export function MarkdownContent({ content, className }: MarkdownContentProps) {
           blockquote: ({ className: quoteClassName, ...props }) => (
             <blockquote
               className={cn(
-                "border-l-2 border-primary/30 pl-4 text-sm italic text-muted-foreground dark:text-foreground/74 sm:text-base",
+                "border-l-2 border-border/80 pl-4 text-sm italic text-muted-foreground dark:text-foreground/74 sm:text-base",
                 quoteClassName
               )}
               {...props}
