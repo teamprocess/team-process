@@ -2,7 +2,7 @@ export const PROCESS_HOME_SECTIONS = [
   {
     id: "intro",
     label: "동아리 소개",
-    content: `## PROCESS 소개
+    content: `## 🌱 PROCESS 소개
 
 PROCESS는 실제 사용자들이 쓰는 서비스 **Clash**를 운영하는 개발 동아리입니다.
 
@@ -16,7 +16,7 @@ PROCESS는 실제 사용자들이 쓰는 서비스 **Clash**를 운영하는 개
   {
     id: "difference",
     label: "차별점",
-    content: `## PROCESS만의 차별점
+    content: `## ✨ PROCESS만의 차별점
 
 PROCESS는 단순히 수업만 듣고 끝나는 동아리가 아닙니다.
 
@@ -29,7 +29,7 @@ PROCESS는 단순히 수업만 듣고 끝나는 동아리가 아닙니다.
   {
     id: "flow",
     label: "활동 흐름",
-    content: `## 활동 흐름
+    content: `## 🧭 활동 흐름
 
 1. **기초 학습**
    웹 기초, Java/Spring, Git/GitHub를 배우며 개발 기반을 만듭니다.
@@ -46,7 +46,7 @@ PROCESS는 단순히 수업만 듣고 끝나는 동아리가 아닙니다.
   {
     id: "activities",
     label: "주요 활동",
-    content: `## 주요 활동
+    content: `## 💻 주요 활동
 
 신입생이 들어와서 가장 먼저 체감할 수 있는 활동들입니다.
 
@@ -59,7 +59,7 @@ PROCESS는 단순히 수업만 듣고 끝나는 동아리가 아닙니다.
   {
     id: "benefits",
     label: "얻게 되는 것",
-    content: `## PROCESS에서 얻게 되는 것
+    content: `## 🚀 PROCESS에서 얻게 되는 것
 
 처음에는 막막해도, 활동을 지나면 "나도 만들 수 있다"는 감각이 분명하게 남습니다.
 
